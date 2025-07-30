@@ -1,1 +1,1 @@
-## This is the backend for the [Knowledge system](https://github.com/chaanakyaaM/Knowledge_sys)
+## This is the backend for [Knowledge canvas](https://github.com/chaanakyaaM/Knowledge_canvas)
