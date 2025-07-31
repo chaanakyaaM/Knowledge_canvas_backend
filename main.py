@@ -245,32 +245,6 @@ def load_flow(user_id):
         logger.error(f"Error in load_flow: {e}")
         return jsonify({'error': str(e)}), 500
 
-# Add a single node
-@app.route('/api/flow/node', methods=['POST'])
-def add_node():
-    """Add a single node to the flow"""
-    if not flow_manager:
-        return jsonify({'error': 'Firebase not initialized'}), 500
-    
-    try:
-        data = request.get_json()
-        user_id = data.get('user_id', 'default_user')
-        node = data.get('node')
-        
-        if not node:
-            return jsonify({'error': 'Node data required'}), 400
-        
-        success = flow_manager.add_node(user_id, node)
-        
-        if success:
-            return jsonify({'message': 'Node added successfully'})
-        else:
-            return jsonify({'error': 'Failed to add node'}), 500
-            
-    except Exception as e:
-        logger.error(f"Error in add_node: {e}")
-        return jsonify({'error': str(e)}), 500
-
 # Delete a node
 @app.route('/api/flow/node/<user_id>/<node_id>', methods=['DELETE'])
 def delete_node(user_id, node_id):
